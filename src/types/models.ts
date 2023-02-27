@@ -20,3 +20,5 @@ export interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+export type Posts = [object]

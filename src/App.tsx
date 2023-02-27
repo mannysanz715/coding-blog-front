@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
@@ -15,17 +15,34 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as postsService from './services/postsService'
 
 // stylesheets
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { Posts, User } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
+
+  const [posts, setPosts] = useState<Posts | null>()
+
+  useEffect((): void => {
+    const fetchPosts = async (): Promise<void> => {
+      try {
+        const posts: Posts = await postsService.getUserPosts()
+        setPosts(posts)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    if (user) fetchPosts()
+  }, [user])
+
+  console.log(posts)
 
   const handleLogout = (): void => {
     authService.logout()
