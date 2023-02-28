@@ -3,17 +3,27 @@ import styles from './Landing.module.css'
 
 // types
 import { User } from '../../types/models'
+import PostCard from '../../components/PostCard/PostCard'
 
 interface LandingProps {
   user: User | null;
+  postList: [object] | undefined;
 }
 
+interface postType{
+  title: string;
+  text: string;
+}
 const Landing = (props: LandingProps): JSX.Element => {
-  const { user } = props
+  const { user, postList } = props
+
+    console.log(postList)
 
   return (
     <main className={styles.container}>
+      <>
       <h1>hello, {user ? user.name : 'friend'}</h1>
+    </>
     </main>
   )
 }

@@ -21,19 +21,19 @@ import * as postsService from './services/postsService'
 import './App.css'
 
 // types
-import { Posts, User } from './types/models'
+import { User } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
 
-  const [posts, setPosts] = useState<Posts | null>()
+  const [posts, setPosts] = useState<[object]>()
 
   useEffect((): void => {
     const fetchPosts = async (): Promise<void> => {
       try {
-        const posts: Posts = await postsService.getUserPosts()
+        const posts = await postsService.getUserPosts()
         setPosts(posts)
       } catch (error) {
         console.log(error)
@@ -42,7 +42,6 @@ function App(): JSX.Element {
     if (user) fetchPosts()
   }, [user])
 
-  console.log(posts)
 
   const handleLogout = (): void => {
     authService.logout()
@@ -58,7 +57,7 @@ function App(): JSX.Element {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} postList={posts} />} />
         <Route
           path="/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
