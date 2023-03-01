@@ -43,7 +43,7 @@ function App(): JSX.Element {
       }
     }
     if (user) fetchPosts()
-  }, [counter])
+  }, [counter, user])
 
 
   const handleLogout = (): void => {

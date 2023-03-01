@@ -33,16 +33,18 @@ const CreatePrompt = (props: counterProps): JSX.Element =>{
     >
       <h3>Post Title</h3>
       <input
+      className='input-title'
       type="text"
       name="title"
       onChange={handleChange}
       />
       <h3>Post Content</h3>
       <textarea
+      className='text-area-input'
       name="text"
       onChange={handleChange}
       />
-      <button type="submit">Post</button>
+      <button className="button-post" type="submit">Post</button>
     </form>
   </div>
   )
