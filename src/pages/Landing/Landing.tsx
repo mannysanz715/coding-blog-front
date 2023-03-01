@@ -2,7 +2,7 @@
 import styles from './Landing.module.css'
 
 // types
-import { User } from '../../types/models'
+import { User, Post} from '../../types/models'
 import PostCard from '../../components/PostCard/PostCard'
 
 interface LandingProps {
@@ -23,6 +23,11 @@ const Landing = (props: LandingProps): JSX.Element => {
     <main className={styles.container}>
       <>
       <h1>hello, {user ? user.name : 'friend'}</h1>
+      {postList?.map((post, idx) =>
+        <PostCard key={idx}
+        post={post}
+        />
+        )}
     </>
     </main>
   )

@@ -1,34 +1,19 @@
 import { ObjectLiteralElementLike } from 'typescript';
 
+import { Post } from '../../types/models'
+
 interface PostCardProps  {
-  postTitle: string ;
-  postText: string ;
+  post: Post ;
 }
 
 
 function PostCard(props: PostCardProps): JSX.Element {
-  const { postTitle, postText } = props;
+  const { post } = props;
+  console.log(post)
   return (
     <>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
-      <h1>hi</h1>
+      <h1>{post.title}</h1>
+      <p>{post.text}</p>
     </>
   );
 
