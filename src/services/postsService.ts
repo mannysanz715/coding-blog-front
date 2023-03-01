@@ -1,7 +1,7 @@
 import { Profile, Post } from '../types/models'
 import * as tokenService from './tokenService'
 
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
+const BASE_URL = `https://coding-blog-pern.fly.dev/api/posts`
 
 async function getUserPosts(){
   try {
