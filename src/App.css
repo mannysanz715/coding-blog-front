@@ -1,0 +1,41 @@
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing-title{
+  color: black;
+}
+
+.post-list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  
+}
+.create-post-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.button{
+  border: none;
+  border-radius: 15px;
+  width: 30px;
+  background-color: lightcoral;
+  color: white;
+}
+
+.button:hover{
+  width:50px;
+  background-color: red;
+}

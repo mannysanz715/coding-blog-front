@@ -21,11 +21,11 @@ function PostCard(props: PostCardProps): JSX.Element {
     }
   }
   return (
-    <div>
-      <h1>{post.title}</h1>
+    <div className='post-card'>
+      <h2>{post.title}</h2>
       <p>{post.text}</p>
       <form onSubmit={handleDelete}>
-          <button>X</button>
+          <button className='button'>X</button>
         </form>
     </div>
   );

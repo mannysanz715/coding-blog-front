@@ -1,5 +1,5 @@
 // stylesheets
-import styles from './Landing.module.css'
+import styles from '../../App.css'
 
 // types
 import { User, Post} from '../../types/models'
@@ -26,13 +26,13 @@ const Landing = (props: LandingProps): JSX.Element => {
 
 
   return (
-    <main className={styles.container}>
+    <main>
     <>
-      <h1>{user ? user.name : 'Welcome to my Blog. Login/SignUp'}</h1>
+      <h1 className='landing-title'>{user ? `${user.name}'s Blog` : 'Welcome to my Blog. Login/SignUp'}</h1>
 
 
       {user ?  <CreatePrompt counter={counter} addCounter={addCounter} /> : ''}
-      <>
+      <div className='post-list-container'>
         {postList?.map((post, idx) => { let postId = post.id
           return(<>
           <PostCard key={idx} post={post}
@@ -40,7 +40,7 @@ const Landing = (props: LandingProps): JSX.Element => {
           
           </>)}
           )}
-      </>
+      </div>
     </>
     </main>
   )

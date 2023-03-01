@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import * as postsService from '../../services/postsService'
 
 interface counterProps {
@@ -28,8 +27,8 @@ const CreatePrompt = (props: counterProps): JSX.Element =>{
   }
 
   return(
-  <>
-    <form
+  <div>
+    <form className='create-post-form'
     onSubmit={handlePost}
     >
       <h3>Post Title</h3>
@@ -45,7 +44,7 @@ const CreatePrompt = (props: counterProps): JSX.Element =>{
       />
       <button type="submit">Post</button>
     </form>
-  </>
+  </div>
   )
 }
 
