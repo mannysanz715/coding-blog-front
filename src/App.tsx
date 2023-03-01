@@ -30,11 +30,12 @@ function App(): JSX.Element {
 
   const [posts, setPosts] = useState<[Post] | null>(null)
 
-  let [counter, setCounter] = useState<number>(1)
+  let [counter, setCounter] = useState<number>(0)
 
   useEffect((): void => {
     const fetchPosts = async (): Promise<void> => {
       try {
+        console.log(counter)
         const posts = await postsService.getUserPosts()
         setPosts(posts.reverse())
       } catch (error) {

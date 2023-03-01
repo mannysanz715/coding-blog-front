@@ -24,8 +24,6 @@ interface post{
 const Landing = (props: LandingProps): JSX.Element => {
   const { user, postList, counter, addCounter } = props
 
-  
-    console.log(postList)
 
   return (
     <main className={styles.container}>
