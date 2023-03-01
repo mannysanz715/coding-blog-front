@@ -9,7 +9,6 @@ interface PostCardProps  {
 
 function PostCard(props: PostCardProps): JSX.Element {
   const { post } = props;
-  console.log(post)
   return (
     <>
       <h1>{post.title}</h1>

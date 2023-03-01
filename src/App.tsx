@@ -21,20 +21,20 @@ import * as postsService from './services/postsService'
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { User, Post } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
 
-  const [posts, setPosts] = useState<[object]>()
+  const [posts, setPosts] = useState<[Post] | null>(null)
 
   useEffect((): void => {
     const fetchPosts = async (): Promise<void> => {
       try {
         const posts = await postsService.getUserPosts()
-        setPosts(posts)
+        setPosts(posts.reverse())
       } catch (error) {
         console.log(error)
       }

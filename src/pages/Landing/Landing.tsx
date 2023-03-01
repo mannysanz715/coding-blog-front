@@ -4,10 +4,11 @@ import styles from './Landing.module.css'
 // types
 import { User, Post} from '../../types/models'
 import PostCard from '../../components/PostCard/PostCard'
+import CreatePrompt from '../../components/CreatePrompt/CreatePrompt';
 
 interface LandingProps {
   user: User | null;
-  postList: [object] | undefined;
+  postList: [Post] | null;
 }
 
 interface postType{
@@ -17,17 +18,23 @@ interface postType{
 const Landing = (props: LandingProps): JSX.Element => {
   const { user, postList } = props
 
+
+  
     console.log(postList)
 
   return (
     <main className={styles.container}>
       <>
       <h1>hello, {user ? user.name : 'friend'}</h1>
-      {postList?.map((post, idx) =>
-        <PostCard key={idx}
-        post={post}
-        />
+
+      <CreatePrompt />
+      
+      <>
+      {postList?.map((post, idx) => {
+        return<PostCard key={idx} post={post}
+        />}
         )}
+        </>
     </>
     </main>
   )
