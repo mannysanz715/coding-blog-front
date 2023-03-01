@@ -9,6 +9,8 @@ import CreatePrompt from '../../components/CreatePrompt/CreatePrompt';
 interface LandingProps {
   user: User | null;
   postList: [Post] | null;
+  counter: number;
+  addCounter: React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface postType{
@@ -16,7 +18,7 @@ interface postType{
   text: string;
 }
 const Landing = (props: LandingProps): JSX.Element => {
-  const { user, postList } = props
+  const { user, postList, counter, addCounter } = props
 
 
   
@@ -27,7 +29,7 @@ const Landing = (props: LandingProps): JSX.Element => {
       <>
       <h1>hello, {user ? user.name : 'friend'}</h1>
 
-      <CreatePrompt />
+      <CreatePrompt counter={counter} addCounter={addCounter} />
       
       <>
       {postList?.map((post, idx) => {

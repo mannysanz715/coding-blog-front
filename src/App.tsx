@@ -30,6 +30,8 @@ function App(): JSX.Element {
 
   const [posts, setPosts] = useState<[Post] | null>(null)
 
+  let [counter, setCounter] = useState<number>(1)
+
   useEffect((): void => {
     const fetchPosts = async (): Promise<void> => {
       try {
@@ -40,7 +42,7 @@ function App(): JSX.Element {
       }
     }
     if (user) fetchPosts()
-  }, [user])
+  }, [counter])
 
 
   const handleLogout = (): void => {
@@ -57,7 +59,7 @@ function App(): JSX.Element {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} postList={posts} />} />
+        <Route path="/" element={<Landing user={user} counter={counter} addCounter={setCounter} postList={posts} />} />
         <Route
           path="/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}

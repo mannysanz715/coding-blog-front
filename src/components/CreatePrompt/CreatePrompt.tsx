@@ -2,10 +2,18 @@ import { useState } from 'react'
 
 import * as postsService from '../../services/postsService'
 
-const CreatePrompt = (): JSX.Element =>{
+interface counterProps {
+  counter: number;
+  addCounter: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const CreatePrompt = (props: counterProps): JSX.Element =>{
+  const { counter, addCounter} = props
+
   const handlePost = async (evt: React.FormEvent): Promise<void> => {
     evt.preventDefault()
     try {
+      addCounter(counter + 1)
       await postsService.createPost(formData)
     } catch (err) {
       console.log(err)
