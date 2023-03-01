@@ -15,6 +15,14 @@ async function getUserPosts(){
   }
 }
 
+async function deletePost(id:number){
+  const res = await fetch(BASE_URL+'/delete/'+id,{
+    method: 'DELETE',
+    headers: {
+    'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+}
+
 async function createPost(formData: Post) : Promise<void>{
   try {
     console.log(formData)
@@ -31,5 +39,6 @@ async function createPost(formData: Post) : Promise<void>{
 
 export {
   getUserPosts,
-  createPost
+  createPost,
+  deletePost
 }
