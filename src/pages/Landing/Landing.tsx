@@ -27,20 +27,20 @@ const Landing = (props: LandingProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
+    <>
+      <h1>{user ? user.name : 'Welcome to my Blog. Login/SignUp'}</h1>
 
-      <CreatePrompt counter={counter} addCounter={addCounter} />
-      
+
+      {user ?  <CreatePrompt counter={counter} addCounter={addCounter} /> : ''}
       <>
-      {postList?.map((post, idx) => { let postId = post.id
-        return(<>
-        <PostCard key={idx} post={post}
-        />
-        
-        </>)}
-        )}
-        </>
+        {postList?.map((post, idx) => { let postId = post.id
+          return(<>
+          <PostCard key={idx} post={post}
+          />
+          
+          </>)}
+          )}
+      </>
     </>
     </main>
   )
